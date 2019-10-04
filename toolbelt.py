@@ -4,7 +4,6 @@ import numpy as np
 from scipy import ndimage
 from skimage.feature import greycomatrix, greycoprops
 from constants import *
-from base_classes import *
 import traceback
 import sys
 
