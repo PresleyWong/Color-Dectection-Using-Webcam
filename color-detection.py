@@ -73,12 +73,26 @@ class CRect:
             self.bR = (self.right, self.bR[1])
 
 
+def get_patch_hsv_range(img, rect_roi):
+    hsv_img = img.copy()
+    hsv_img = cv2.medianBlur(hsv_img, 5)
+    hsv_img = get_crop_img(hsv_img, rect_roi.tL[0], rect_roi.tL[1], rect_roi.height, rect_roi.width)
+    h_chan, s_chan, v_chan = cv2.split(hsv_img)
+    min_max_list = []
+    hsv_channel = [h_chan, s_chan, v_chan]
+    for n, chan in enumerate(hsv_channel):
+        # c_list = chan[np.nonzero(chan)]
+        min_max_list.append(np.max(chan))
+        min_max_list.append(np.min(chan))
+    return min_max_list
+
+
 def run_teach():
     global glb_teach_flag, glb_h_chan_max, glb_h_chan_min, glb_s_chan_max, glb_s_chan_min, glb_v_chan_max, glb_v_chan_min
 
     teach_roi()
     rect_roi = CRect(glb_roi_tl, glb_roi_br)
-    #glb_h_chan_max, glb_h_chan_min, glb_s_chan_max, glb_s_chan_min, glb_v_chan_max, glb_v_chan_min = get_patch_hsv_range(glb_hsv_img, rect_roi)
+    glb_h_chan_max, glb_h_chan_min, glb_s_chan_max, glb_s_chan_min, glb_v_chan_max, glb_v_chan_min = get_patch_hsv_range(glb_hsv_img, rect_roi)
     glb_teach_flag = True
 
 
