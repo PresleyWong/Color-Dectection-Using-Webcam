@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="523ae44e-8f54-4d29-bdde-cf8fcdae42c1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ColorDetection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ColorDetection.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/base-classes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/color-detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/color-detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toolbelt.py" beforeDir="false" afterPath="$PROJECT_DIR$/toolbelt.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,20 +17,11 @@
       <file leaf-file-name="color-detection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/color-detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+            <state relative-caret-position="234">
+              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toolbelt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/toolbelt.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3624">
-              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -150,7 +137,7 @@
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Python Console" order="3" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.53208554" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.24598931" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -185,13 +172,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/toolbelt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3624">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/base-classes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -202,10 +182,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/toolbelt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3624">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/color-detection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+        <state relative-caret-position="234">
+          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
