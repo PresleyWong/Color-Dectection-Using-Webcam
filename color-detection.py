@@ -1,6 +1,5 @@
 import cv2
 from toolbelt import *
-from base_classes import *
 
 
 glb_cam_width = 640
@@ -28,28 +27,27 @@ glb_v_chan_min = 0
 def main():
     global glb_display_img, glb_insp_img, glb_gray_img, glb_hsv_img
 
-    vidcap = Webcam(0)
-    vidcap.set_prop_frame_width(glb_cam_width)
-    vidcap.set_prop_frame_height(glb_cam_height)
-
+    vidcap = cv2.VideoCapture(0)
+    vidcap.set(cv2.CAP_PROP_FRAME_WIDTH, glb_cam_width)
+    vidcap.set(cv2.CAP_PROP_FRAME_HEIGHT, glb_cam_height)
     main_str = "Main View"
 
-    while True:
-        if vidcap.grab_frame():
-            k = cv2.waitKey(1)
-            org_img = vidcap.buffer
 
+    while vidcap.isOpened():
+        success, buffer = vidcap.read()
+        k = cv2.waitKey(1)
+        org_img = buffer
 
-            glb_display_img = org_img.copy()
-            glb_insp_img = org_img.copy()
-            glb_gray_img = cv2.cvtColor(glb_insp_img, cv2.COLOR_BGR2GRAY)
-            glb_hsv_img = cv2.cvtColor(glb_insp_img, cv2.COLOR_BGR2HSV)
+        glb_display_img = org_img.copy()
+        glb_insp_img = org_img.copy()
+        glb_gray_img = cv2.cvtColor(glb_insp_img, cv2.COLOR_BGR2GRAY)
+        glb_hsv_img = cv2.cvtColor(glb_insp_img, cv2.COLOR_BGR2HSV)
 
-            imshow(main_str, glb_display_img)
+        imshow(main_str, glb_display_img)
 
-            if cv2.waitKey(20) == 27:
-                vidcap.release()
-                break
+        if k == 27:
+            vidcap.release()
+            break
 
 
 if __name__ == '__main__':
