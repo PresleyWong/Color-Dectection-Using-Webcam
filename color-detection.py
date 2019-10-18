@@ -16,42 +16,14 @@ class CRect(object):
         self.height = bR[1] - tL[1]
         self.center = ( int((self.right+self.left)*0.5),  int((self.top+self.bottom)*0.5) )
 
-    def area(self):
-        return (self.width * self.height)
-
-    def perim(self):
-        return (2 * self.width) + (2 * self.height)
-
-    def pos(self):
-        return self.tL, self.tR, self.bR, self.bL
-
     def isValid(self):
         if self.bR[0] > self.tL[0] and self.bR[1] > self.tL[1]:
             return True
         else:
             return False
 
-    def validate(self, image):
-        h, w = image.shape[:2]
-        if self.top < 0:
-            self.top = 0
-            self.tL = (self.tL[0], self.top)
-            self.tR = (self.bR[0], self.top)
-        if self.bottom > h:
-            self.bottom = h-1
-            self.bL = (self.bL[0], self.bottom)
-            self.bR = (self.bR[0], self.bottom)
-        if self.left < 0:
-            self.left = 0
-            self.tL = (self.left, self.tL[1])
-            self.bL = (self.left, self.bL[1])
-        if self.right > w:
-            self.right = w-1
-            self.tR = (self.right, self.tR[1])
-            self.bR = (self.right, self.bR[1])
 
-
-class CColorDetector(object):
+class ColorDetector(object):
     def __init__(self):
         self.teach_flag = False
         self.h_max = 0
@@ -91,7 +63,6 @@ class CColorDetector(object):
         if w is not 0 and h is not 0:
             roi_tl = (x, y)
             roi_br = (x + w, y + h)
-
             rect_roi = CRect(roi_tl, roi_br)
             self.h_max, self.h_min, \
             self.s_max, self.s_min, \
@@ -100,7 +71,6 @@ class CColorDetector(object):
             self.h_max, self.h_min, \
             self.s_max, self.s_min, \
             self.v_max, self.v_min = 0,0,0,0,0,0
-
 
     def detect_color(self, insp_img):
         hsv_img = cv2.cvtColor(insp_img, cv2.COLOR_BGR2HSV)
@@ -114,16 +84,15 @@ class CColorDetector(object):
 class CameraFeed(object):
     def start(self):
         main_str = "Webcam View"
-        detector = CColorDetector()
-        vidcap = cv2.VideoCapture(0)
-        #if vidcap.read()[0] == False: vidcap = cv2.VideoCapture("sample/Bouncing balls.mp4")
+        detector = ColorDetector()
+        vidcap = cv2.VideoCapture(0) #Alternatively replace 0 to a video file path
         while vidcap.isOpened():
             success, org_img = vidcap.read()
             k = cv2.waitKey(20)
             display_img = org_img.copy()
             insp_img = org_img.copy()
 
-            if k == 13: #press enter
+            if k == 13: #press enter teach mode
                 detector.teach_color(insp_img)
 
             if detector.teach_flag is True:
@@ -132,7 +101,7 @@ class CameraFeed(object):
 
             self.__imshow(main_str, display_img)
 
-            if k == 27: #press Esc
+            if k == 27: #press Esc to exit
                 vidcap.release()
                 break
 
