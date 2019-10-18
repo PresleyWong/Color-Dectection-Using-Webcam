@@ -82,24 +82,25 @@ class CColorDetector(object):
         str = "Webcam View"
         canvas_img = insp_img.copy()
         hsv_img = cv2.cvtColor(insp_img, cv2.COLOR_BGR2HSV)
-        cv2.putText(canvas_img, "Draw a rectangle inside target object", (5, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, GREEN, 1, cv2.LINE_AA)
-        cv2.putText(canvas_img, "Press 'Enter' once done", (5, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.5, GREEN, 1,
-                    cv2.LINE_AA)
+        cv2.putText(canvas_img, "Draw a rectangle inside target object", (5, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, DARK_RED, 2, cv2.LINE_AA)
+        cv2.putText(canvas_img, "Press 'Enter' once done", (5, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, DARK_RED, 2, cv2.LINE_AA)
         cv2.namedWindow(str, cv2.WINDOW_NORMAL)
         x, y, w, h = cv2.selectROI(str, canvas_img, False)
         self.teach_flag = True
 
-        if w is 0 and h is 0:
-            roi_tl = (0, 0)
-            roi_br = (0 + 1, 0 + 1)
-        else:
+        if w is not 0 and h is not 0:
             roi_tl = (x, y)
             roi_br = (x + w, y + h)
 
-        rect_roi = CRect(roi_tl, roi_br)
-        self.h_max, self.h_min, \
-        self.s_max, self.s_min, \
-        self.v_max, self.v_min = self.__get_patch_hsv_range(hsv_img, rect_roi)
+            rect_roi = CRect(roi_tl, roi_br)
+            self.h_max, self.h_min, \
+            self.s_max, self.s_min, \
+            self.v_max, self.v_min = self.__get_patch_hsv_range(hsv_img, rect_roi)
+        else:
+            self.h_max, self.h_min, \
+            self.s_max, self.s_min, \
+            self.v_max, self.v_min = 0,0,0,0,0,0
+
 
     def detect_color(self, insp_img):
         hsv_img = cv2.cvtColor(insp_img, cv2.COLOR_BGR2HSV)
